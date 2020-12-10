@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {review} from './review'
+import {Review} from './Review'
 
 //Define constants
 const express = require('express');
