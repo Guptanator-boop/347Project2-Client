@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Vinsand is a bitch
         </p>
       </header>
     </div>
