@@ -42,6 +42,12 @@ function App() {
             <img src="https://images-na.ssl-images-amazon.com/images/I/81ai6zx6eXL._AC_SL1304_.jpg"></img>
           </div>
         </div>
+        <div className="movies-display">
+          <h2>Latest Released</h2>
+          <div className="new-movies">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/81ai6zx6eXL._AC_SL1304_.jpg"></img>
+          </div>
+        </div>
       </div>
       <footer>
           <p>Made using <a href="https://developers.themoviedb.org/3/getting-started/introduction">The Movie Database</a></p>
