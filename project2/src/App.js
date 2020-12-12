@@ -3,20 +3,19 @@ import './App.css';
 import {Review} from './Review';
 import {Movie} from './Movie';
 import {useSelector, useDispatch} from 'react-redux';
-import {loadReviews, loadTrending, search} from './actions';
+import {loadLatest, loadTrending, loadTopRated} from './actions';
+import { findAllByDisplayValue } from '@testing-library/react';
 
 function App() {
-  const movies = useSelector(state => state.movies);
-  //console.log(movies);
+  const movies = useSelector(state => state.trendings);
+  const latests = useSelector(state => state.latests);
+  const rated = useSelector(state => state.rated);
   const dispatch = useDispatch();
-  // const onSearch = () => {
-  //   dispatch(search('kush'));
-  // }
-
-  
-   useEffect(() => {
-     dispatch(loadTrending());
-   }, [dispatch]);
+  useEffect(() => {
+    dispatch(loadTrending());
+    dispatch(loadLatest());
+    dispatch(loadTopRated());
+  }, [dispatch]);
 
   return (
     <div className="App">
@@ -31,21 +30,21 @@ function App() {
       </div>
       <div className="body">
         <div className="movies-display">
-          <h2>Trending Movies</h2>
+          <h2>Trending</h2>
           <div className="trending">
             {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
           </div>
         </div>
         <div className="movies-display">
-          <h2>Most Watched</h2>
-          <div className="top-movies">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/81ai6zx6eXL._AC_SL1304_.jpg"></img>
+          <h2>Top Rated</h2>
+          <div className="trending">
+          {rated.map(movie => <Movie key={movie.id} movie={movie} />)}
           </div>
         </div>
         <div className="movies-display">
           <h2>Latest Released</h2>
-          <div className="new-movies">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/81ai6zx6eXL._AC_SL1304_.jpg"></img>
+          <div className="trending">
+          {latests.map(movie => <Movie key={movie.id} movie={movie} />)}
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ const baseURL = 'https://api.themoviedb.org/3/';
 export const Action = Object.freeze({
     LoadReviews: 'LoadReviews',
     LoadTrending: 'LoadTrending',
+    LoadLatest: 'LoadLatest',
+    LoadTopRated: 'LoadTopRated'
 });
 
 export function loadReviews(reviews){
@@ -50,15 +52,55 @@ export function loadTrending() {
     };
 }
 
-export function loadTrendingAction(movies){
+export function loadTrendingAction(trendings){
     return{
         type: Action.LoadTrending,
-        payload: movies,
+        payload: trendings,
     };
 }
 
-function populateTrending(movies) {
-    //console.log(movies);
+export function loadLatest() {
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+    return dispatch => {
+        fetch(url, {
+            "content-type": 'application/json',
+        })
+        .then(checkForErrors)
+        .then(response => response.json())
+        .then(data => {
+            dispatch(loadLatestAction(data.results));
+        })
+        .catch(e => console.error(e));
+    };
+}
+
+export function loadLatestAction(latests){
+    return{
+        type: Action.LoadLatest,
+        payload: latests,
+    };
+}
+
+export function loadTopRated() {
+    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+    return dispatch => {
+        fetch(url, {
+            "content-type": 'application/json',
+        })
+        .then(checkForErrors)
+        .then(response => response.json())
+        .then(data => {
+            dispatch(loadTopRatedAction(data.results));
+        })
+        .catch(e => console.error(e));
+    };
+}
+
+export function loadTopRatedAction(rated){
+    return{
+        type: Action.LoadTopRated,
+        payload: rated,
+    };
 }
 
 function checkForErrors(response){

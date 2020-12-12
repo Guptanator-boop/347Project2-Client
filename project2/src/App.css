@@ -31,11 +31,13 @@ h2 {
 }
 
 .trending::-webkit-scrollbar {
-  background: #2C3E50;
+  background: #1C2833;
+  border-style: solid black;
 }
 
 .trending::-webkit-scrollbar-track {
-  background: #2C3E50;
+  background: #1C2833;
+  border-style: solid black;
 }
 
 .trending::-webkit-scrollbar-thumb {
