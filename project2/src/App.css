@@ -23,11 +23,6 @@ h2 {
   justify-content: center;
 }
 
-.movies-display {
-  
-  /* justify-content: left; */
-}
-
 .trending {
   display: flex;
   overflow-x: scroll;
@@ -35,9 +30,22 @@ h2 {
   justify-content: left;
 }
 
+.trending::-webkit-scrollbar {
+  background: #2C3E50;
+}
+
+.trending::-webkit-scrollbar-track {
+  background: #2C3E50;
+}
+
+.trending::-webkit-scrollbar-thumb {
+  background: #ddd;
+}
+
 .trending div{
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 20px;
 }
 
 .searchbar form {
@@ -87,6 +95,10 @@ button {
   font-size: 14px;
   border: solid black 1px;
   cursor: pointer;
+}
+
+h2 {
+  color: #ddd;
 }
 
 footer {
