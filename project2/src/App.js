@@ -6,11 +6,13 @@ function App() {
   return (
     <div className="App">
       <div class="top">
-        <h1>Movie2Watch.com</h1>
-        <form action="/action_page.php">
-        <input type="text" placeholder="Movie name.." name="search"></input>
-        <button type="submit">Search</button>
-        </form>
+        <h1>Movies 2 Watch</h1>
+        <div class="searchbar">
+          <form action="/action_page.php">
+            <input type="text" placeholder="Movie name.." name="search"></input>
+            <button type="submit"><img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png"></img></button>
+          </form>
+        </div>
       </div>
       <div class="body">
         <div class="movies-display">
