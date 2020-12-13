@@ -1,18 +1,22 @@
 import  React from 'react';
 import './Search.css';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {search} from './actions';
 import {Link} from 'react-router-dom';
 import {Movie} from './Movie';
 
 
 export function Search(props) {
-    const s = useSelector(state => state.search);
     const dispatch = useDispatch();
-    const searc = props.search;
+    var searc = props.search;
     const onSearch = () => {
         dispatch(search(document.getElementById('textbox').value));
       }
+      if(searc === undefined) {
+        searc = JSON.parse(localStorage.getItem("search"));
+    } else {
+        localStorage.setItem("search", JSON.stringify(searc));
+    }
     return (
         <div className="searchResults">
             <div className="top">
@@ -20,7 +24,7 @@ export function Search(props) {
                 <div className="searchbar">
                     <form action="/search">
                         <input type="text" id='textbox' placeholder="Search..." name="search"></input>
-                        <Link to={`/search/`}><input type="image" id="search-button" onClick={onSearch} src={process.env.PUBLIC_URL + '/search.png'} /></Link>
+                        <Link to={`/search/`}><input type="image" alt="search" id="search-button" onClick={onSearch} src={process.env.PUBLIC_URL + '/search.png'} /></Link>
                     </form>
                 </div>
             </div>
@@ -30,7 +34,7 @@ export function Search(props) {
                 {searc.map(movie => <Link to={`/search/${movie.original_title}`}><Movie key={movie.id} movie={movie} /></Link>)}
                 </div>
             </div>
-            <footer>
+            <footer id="search-footer">
                 <p>Made using <a href="https://developers.themoviedb.org/3/getting-started/introduction">The Movie Database</a></p>
                 <p>Developed by Kyle Vinsand and Kushal Gupta</p>
             </footer>

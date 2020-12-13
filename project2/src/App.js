@@ -6,8 +6,21 @@ import {MoviePage} from './MoviePage';
 import {Search} from './Search';
 import {useSelector, useDispatch} from 'react-redux';
 import {loadLatest, loadTrending, loadTopRated, search} from './actions';
-import { findAllByDisplayValue } from '@testing-library/react';
+import { findAllByDisplayValue, render } from '@testing-library/react';
 import {Link, Switch, Route, Redirect} from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner'
+
+function Loading(props){
+  
+  if(props.load){
+    return (<Spinner className="loadingspin" animation="border" role="status">
+    <span className="sr-only">Loading...</span>
+  </Spinner>
+    );
+  } else {
+    return null;
+  }
+}
 
 function App() {
   const movies = useSelector(state => state.trendings);
@@ -23,17 +36,16 @@ function App() {
   const onSearch = () => {
     dispatch(search(document.getElementById('textbox').value));
   }
-
+  const loadingTop = useSelector(state => state.loadingTop);
+  const loadingTrending = useSelector(state => state.loadingTrending);
+  const loadingUpcoming = useSelector(state => state.loadingUpcoming);
   return (
     
     <div className="App">
-                <Switch>
+      <Switch>
       <Route exact path="/search">
         <Search search = {s}/>
       </Route>
-      {/* <Route exact path="/movie/:title">
-        return <MoviePage />
-        </Route> */}
       <Route exact path="/trending/:title" children={props => {
         const title = props.match.params.title;
         const movie = movies.find(m => m.original_title === title);
@@ -55,6 +67,9 @@ function App() {
         return <MoviePage movie={movie} />;
       }} />
       <Route to="" >
+
+
+
       <div className="top">
         <img src='https://fontmeme.com/permalink/201213/ed9fb521c5ce730fca51654044a68288.png' alt="Movies2Watch"></img>
         <div className="searchbar">
@@ -65,22 +80,27 @@ function App() {
         </div>
       </div>
       <div className="body">
+
         <div className="movies-display">
           <h2>Trending</h2>
+          <Loading load={loadingTrending} />
           <div className="movie-list">
             {movies.map(movie => <Link to={`/trending/${movie.original_title}`}><Movie key={movie.id} movie={movie} /></Link>)}
           </div>
         </div>
         <div className="movies-display">
           <h2>Top Rated</h2>
+          <Loading load={loadingTop} />
           <div className="movie-list">
           {rated.map(movie => <Link to={`/toprated/${movie.original_title}`}><Movie key={movie.id} movie={movie} /></Link>)}
           </div>
         </div>
         <div className="movies-display">
           <h2>Upcoming</h2>
+          <Loading load={loadingUpcoming} />
           <div className="movie-list">
-          {latests.map(movie => <Link to={`/upcoming/${movie.original_title}`}><Movie key={movie.id} movie={movie} /></Link>)}          </div>
+          {latests.map(movie => <Link to={`/upcoming/${movie.original_title}`}><Movie key={movie.id} movie={movie} /></Link>)}          
+          </div>
         </div>
       </div>
       <footer>
@@ -93,5 +113,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

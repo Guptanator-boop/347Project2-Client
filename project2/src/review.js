@@ -8,9 +8,9 @@ export function Review(props){
             <div className="review-left">
                 <span className="username">{review.username}</span>
                 <span className="movie_name">{review.movie_name}</span>
+                <span className="rating">{review.rating}</span>
                 </div>
             <div className="review-right">
-                <span className="rating">{review.rating}</span>
                 <span className="message">{review.message}</span>
             </div>
         </div>

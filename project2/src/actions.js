@@ -1,12 +1,13 @@
 const API_KEY = '32a683d6e47d7bf3d66fbb4c7b83c854';
-const baseURL = 'https://api.themoviedb.org/3/';
+// const baseURL = 'https://api.themoviedb.org/3/';
 
 export const Action = Object.freeze({
     LoadReviews: 'LoadReviews',
     LoadTrending: 'LoadTrending',
     LoadLatest: 'LoadLatest',
     LoadTopRated: 'LoadTopRated',
-    LoadSearch: 'LoadSearch'
+    LoadSearch: 'LoadSearch',
+    FinishAddingReview: 'FinishAddingReview',
 });
 
 export function loadReviews(reviews){
@@ -39,18 +40,18 @@ function loadSearchAction(search) {
     };
 }
 
-function fetchSources() {
-    let url = "".concat(baseURL, 'configuration?api_key=', API_KEY);
-    fetch(url)
-    .then((result) => {
-        return result.json();
-    })
-    .then((data) => {
-        let baseImageURL = data.images.secure_base_url;
-        // configData = data.images;
-        search(baseImageURL);
-    })
-}
+// function fetchSources() {
+//     let url = "".concat(baseURL, 'configuration?api_key=', API_KEY);
+//     fetch(url)
+//     .then((result) => {
+//         return result.json();
+//     })
+//     .then((data) => {
+//         let baseImageURL = data.images.secure_base_url;
+//         // configData = data.images;
+//         search(baseImageURL);
+//     })
+// }
 
 export function loadTrending() {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
@@ -116,6 +117,41 @@ export function loadTopRatedAction(rated){
     return{
         type: Action.LoadTopRated,
         payload: rated,
+    };
+}
+
+export function startAddingReview(name, movie, rate, mess){
+    const review = {
+        username: name, movie_name: movie, rating: rate, message: mess,
+    };
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(review)
+    };
+
+    return dispatch => {
+        fetch(`/reviews`, options)
+        .then(checkForErrors)
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok){
+                dispatch(finishAddingReview(review));
+            }
+        })
+        .catch(e => console.error(e));
+    }
+
+
+}
+
+export function finishAddingReview(review){
+    return {
+        type: Action.FinishAddingReview,
+        payload: review,
     };
 }
 

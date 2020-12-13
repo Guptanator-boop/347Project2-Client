@@ -7,7 +7,7 @@ export function Movie(props) {
     if(movie.poster_path) {
         return (
             <div className="movie">
-                <img src={baseURL + movie.poster_path}></img>
+                <img src={baseURL + movie.poster_path} alt={movie.original_title}></img>
                 <p className="title">{movie.original_title}</p>
                 <p className="vote"><strong>{movie.vote_average}</strong></p>
             </div> 
@@ -15,7 +15,7 @@ export function Movie(props) {
     } else {
         return (
             <div className="movie">
-                <img src={unavailable}></img>
+                <img src={unavailable} alt={movie.original_title}></img>
                 <p className="title">{movie.original_title}</p>
                 <p className="vote"><strong>{movie.vote_average}</strong></p>
             </div> 

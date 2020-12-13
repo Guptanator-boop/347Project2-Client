@@ -68,7 +68,7 @@ h2 {
   background: #ddd;
 }
 
-.movie-list div{
+.movie-list div {
   padding-left: 5px;
   padding-right: 5px;
   padding-bottom: 10px;
@@ -89,6 +89,7 @@ h2 {
   border-radius: 15px;
   border-style: solid;
 }
+
 .searchbar input {
   margin-left: 5%;
   width: 50%;
@@ -106,17 +107,6 @@ h2 {
 img {
   height: 175px;
   border-radius: 5px;
-}
-
-button {
-  /* float: right; */
-  padding: 2px 5px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 14px;
-  border: solid black 1px;
-  cursor: pointer;
 }
 
 h2 {
@@ -147,9 +137,139 @@ h2 {
   justify-content: right;
 }
 
+#movie-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.inner-body {
+  padding-top: 10px;
+  width: 50%;
+}
+
+.right-info {
+  padding-left: 10px;
+  text-align: left;
+}
+
+.movie-container {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 10px;
+} 
+
+.movie-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+
+.reviews h1 {
+  color: #ddd;
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+}
+
 footer {
   padding-top: 2px;
   padding-bottom: 2px;
   background-color: black;
   color: #ddd;
+}
+
+@media (max-width: 800px) {
+  .top {
+    background-color: salmon;
+    border-bottom: solid black ;
+  }
+
+  .top img {
+    height: 95%;
+    width: 95%;
+  }
+
+  .searchbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+  
+  .searchbar form {
+    background-color: #2C3E50;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    border-radius: 15px;
+    border-style: solid;
+  }
+  .searchbar input {
+    margin-left: 5%;
+    width: 80%;
+    height: 30px;
+  }
+
+  #search-button {
+    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+    justify-content: right;
+  }
+  .loadingspin {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Movie page css */
+  #movie-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .inner-body {
+    padding-top: 10px;
+    width: 50%;
+  }
+  
+  .right-info {
+    padding-left: 10px;
+    text-align: left;
+  }
+  
+  .movie-container {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 10px;
+  } 
+  
+  .movie-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+  }
+  
+  .reviews h1 {
+    color: #ddd;
+  }
+  
+  .review-list {
+    display: flex;
+    flex-direction: column;
+  }
 }
