@@ -23,7 +23,7 @@ function App() {
         <h1>Movies 2 Watch</h1>
         <div className="searchbar">
           <form action="/action_page.php">
-            <input type="text" placeholder="Movie name.." name="search"></input>
+            <input type="text" placeholder="Search..." name="search"></input>
             <button type="submit"><img src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/search-512.png"></img></button>
           </form>
         </div>
@@ -31,19 +31,19 @@ function App() {
       <div className="body">
         <div className="movies-display">
           <h2>Trending</h2>
-          <div className="trending">
+          <div className="movie-list">
             {movies.map(movie => <Movie key={movie.id} movie={movie} />)}
           </div>
         </div>
         <div className="movies-display">
           <h2>Top Rated</h2>
-          <div className="trending">
+          <div className="movie-list">
           {rated.map(movie => <Movie key={movie.id} movie={movie} />)}
           </div>
         </div>
         <div className="movies-display">
           <h2>Latest Released</h2>
-          <div className="trending">
+          <div className="movie-list">
           {latests.map(movie => <Movie key={movie.id} movie={movie} />)}
           </div>
         </div>

@@ -8,6 +8,8 @@ console.log(props);
     return (
         <div className="movie">
             <img src={baseURL + movie.poster_path}></img>
+            <p className="title">{movie.original_title}</p>
+            <p className="vote"><strong>{movie.vote_average}</strong></p>
         </div> 
     );
 }

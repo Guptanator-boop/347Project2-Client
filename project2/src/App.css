@@ -23,31 +23,45 @@ h2 {
   justify-content: center;
 }
 
-.trending {
+.movie-list {
   display: flex;
   overflow-x: scroll;
   flex-direction: row;
   justify-content: left;
 }
 
-.trending::-webkit-scrollbar {
+.title  {
+  color: #ddd;
+  text-align: left;
+  margin: 5px;
+  font-size: 15px;
+}
+
+.vote {
+  font-size: 13px;
+  text-align: left;
+  color: salmon;
+  margin: 5px;
+}
+
+.movie-list::-webkit-scrollbar {
   background: #1C2833;
   border-style: solid black;
 }
 
-.trending::-webkit-scrollbar-track {
+.movie-list::-webkit-scrollbar-track {
   background: #1C2833;
   border-style: solid black;
 }
 
-.trending::-webkit-scrollbar-thumb {
+.movie-list::-webkit-scrollbar-thumb {
   background: #ddd;
 }
 
-.trending div{
+.movie-list div{
   padding-left: 5px;
   padding-right: 5px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 .searchbar form {
