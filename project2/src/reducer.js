@@ -6,6 +6,7 @@ const initialState = {
     trendings: [],
     latests: [],
     rated: [],
+    search: [],
 };
 
 function reducer(state = initialState, action){
@@ -30,7 +31,13 @@ function reducer(state = initialState, action){
             return {
                 ...state,
                 rated: action.payload,
-            }    
+            }   
+            
+        case Action.LoadSearch:
+            return {
+                ...state,
+                search: action.payload,
+            }
 
         default:
             return state;

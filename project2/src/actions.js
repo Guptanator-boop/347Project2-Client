@@ -5,7 +5,8 @@ export const Action = Object.freeze({
     LoadReviews: 'LoadReviews',
     LoadTrending: 'LoadTrending',
     LoadLatest: 'LoadLatest',
-    LoadTopRated: 'LoadTopRated'
+    LoadTopRated: 'LoadTopRated',
+    LoadSearch: 'LoadSearch'
 });
 
 export function loadReviews(reviews){
@@ -16,12 +17,26 @@ export function loadReviews(reviews){
 }
 
 export function search(keyword) {
-    let url = ''.concat(baseURL, 'search/movie?api_key=', API_KEY, '&query=', keyword);
-    fetch(url)
-    .then(result => result.json)
-    .then((data) => {
-        document.getElementById('output').innerHTML = JSON.stringify(data, null, 4);
-    })
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${keyword}&page=1`;
+    return dispatch => {
+        fetch(url, {
+            "content-type": 'application/json',
+        })
+        .then(checkForErrors)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            dispatch(loadSearchAction(data.results));
+        })
+        .catch(e => console.error(e));
+    };
+}
+
+function loadSearchAction(search) {
+    return{
+        type: Action.LoadSearch,
+        payload: search,
+    };
 }
 
 function fetchSources() {
@@ -46,6 +61,7 @@ export function loadTrending() {
         .then(checkForErrors)
         .then(response => response.json())
         .then(data => {
+
             dispatch(loadTrendingAction(data.results));
         })
         .catch(e => console.error(e));
@@ -60,7 +76,7 @@ export function loadTrendingAction(trendings){
 }
 
 export function loadLatest() {
-    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+    const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
     return dispatch => {
         fetch(url, {
             "content-type": 'application/json',
