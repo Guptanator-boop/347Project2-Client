@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
 import {search, startAddingReview, startLoadingReviews} from './actions';
 import {Link} from 'react-router-dom';
-import Review from './Review';
+import {Review} from './Review';
 
 export function MoviePage(props) {
     var movie = props.movie;
@@ -26,11 +26,12 @@ export function MoviePage(props) {
         localStorage.setItem("movie", JSON.stringify(movie));
     }
 
-    useEffect(() => {
-        dispatch(startLoadingReviews(movie.original_title));
-    }, [dispatch]);
-
     const title = movie.original_title;
+
+    useEffect(() => {
+        dispatch(startLoadingReviews(title));
+    }, [dispatch, title]);
+
     const baseURL = "https://image.tmdb.org/t/p/original";
     const unavailable = "https://d32qys9a6wm9no.cloudfront.net/images/movies/poster/500x735.png";
     if(movie.poster_path) {
