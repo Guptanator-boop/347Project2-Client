@@ -8,7 +8,7 @@ import {loadLatest, loadTrending, loadTopRated, search} from './actions';
 import {Link, Switch, Route, Redirect} from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner'
 
-function Loading(props){
+function Loading(props) {
   
   if(props.load){
     return (<Spinner className="loadingspin" animation="border" role="status">

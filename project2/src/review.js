@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function Review(props){
+export default function Review(props){
     const review = props.review;
 
     return (
