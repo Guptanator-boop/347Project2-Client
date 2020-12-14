@@ -5,7 +5,6 @@ import {MoviePage} from './MoviePage';
 import {Search} from './Search';
 import {useSelector, useDispatch} from 'react-redux';
 import {loadLatest, loadTrending, loadTopRated, search} from './actions';
-// import { findAllByDisplayValue, render } from '@testing-library/react';
 import {Link, Switch, Route, Redirect} from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner'
 
