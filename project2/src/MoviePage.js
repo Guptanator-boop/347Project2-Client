@@ -73,7 +73,8 @@ export function MoviePage(props) {
                                 <textarea id="message" name="message" placeholder="Type your review.."></textarea>
                                 <button type="button" onClick={addReview}>Create Review</button>
                             </form>
-                            {seperate.map(review =><Review key={review.id} review={review}/>) }
+                            {seperate !== undefined && Array.isArray(seperate) && seperate.map(review =><Review key={review.id} review={review}/>) }
+                            {!Array.isArray(seperate) && <div>Review Added!</div>}
                         </div>
                     </div>
                 </div>
@@ -124,7 +125,8 @@ export function MoviePage(props) {
                                  <textarea id="messageUn" name="message" placeholder="Type your review.."></textarea>
                                  <button type="button">Create Review</button>
                              </form>
-                             {seperate.map(review =><Review key={review.id} review={review}/>) }
+                             {seperate !== undefined && Array.isArray(seperate) && seperate.map(review =><Review key={review.id} review={review}/>) }
+                             {!Array.isArray(seperate) && <div>Review Added!</div>}
                          </div>
                      </div>
                  </div>

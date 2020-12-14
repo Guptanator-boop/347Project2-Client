@@ -6,20 +6,20 @@ By Kyle Vinsand and Kushal Gupta
 3. Kush and Kyle worked together as partners.
 4. All code was written by us and we conformed to the licenses of the outside sources we utilized.
 5. Our application has a back end to store and load user reviews of the movies and we have a front end client for the user to browse the movies.
-6. 
+6. We use hooks and react utilities instead of making classes.
 7. Our website changes dynamically by having a search functionality, the ability to leave reviews, and allowing the user to select which movie's information thye would liek to be displayed.
-8. 
+8. We keep track of the App's state using redux.
 9. Our front end website follows the visual principles and guidelines that were outlined in project 1.
-10. 
+10. We make calls using fetch and not any outside libraries.
 11. Our home page displays progress spinners while the fetch call is gathering the movie data.
-12. 
+12. Our client is free from all warnings and errors.
 13. We stored the front end client  in Kush's github and shared it with the proffessor.
 14. Our front end client is available through the URL https://project2.347kush.me/ It is server out via HTTPS on port 443. We automatically redirect connections through port 80 to 443.
 15. Our app stores data long term in a MySQL database.
-16. 
+16. We have a ddatabase containing reviews, utilizing Express.
 17. We recieve and send data to the api we used as well as our own database as JSON.
-18. 
+18. All end points and variables we use are appropriately named.
 19. We utilize CORS to handle resource sharing.
 20. We use pm2 on our server to keep our we service running.
-21. 
+21. We have an Nginx server managing access to our web service.
 22. We have a seperate GitHub repository to store the back end of our application.

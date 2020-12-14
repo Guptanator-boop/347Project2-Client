@@ -51,11 +51,11 @@ function reducer(state = initialState, action){
 
         case Action.FinishAddingReview:
             console.log(state.reviews);
-            return {
-                ...state,
-                reviews: [action.payload, ...state.reviews],
-            }
-
+                return {
+                    ...state,
+                    reviews: [action.payload, ...state.reviews],
+                }
+            
         default:
             return state;
     }
