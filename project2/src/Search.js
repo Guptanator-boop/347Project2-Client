@@ -29,7 +29,7 @@ export function Search(props) {
                 </div>
             </div>
             <div className="body">
-                <h1>Search Results</h1>
+                <h1 id="search-title">Search Results</h1>
                 <div className="search-list">
                 {searc.map(movie => <Link to={`/search/${movie.original_title}`}><Movie key={movie.id} movie={movie} /></Link>)}
                 </div>

@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import {Review} from './Review';
 import {Movie} from './Movie';
 import {MoviePage} from './MoviePage';
 import {Search} from './Search';
 import {useSelector, useDispatch} from 'react-redux';
 import {loadLatest, loadTrending, loadTopRated, search} from './actions';
-import { findAllByDisplayValue, render } from '@testing-library/react';
+// import { findAllByDisplayValue, render } from '@testing-library/react';
 import {Link, Switch, Route, Redirect} from 'react-router-dom';
 import Spinner from 'react-bootstrap/Spinner'
 
@@ -75,7 +74,7 @@ function App() {
         <div className="searchbar">
           <form action="/search">
             <input type="text" id="textbox" placeholder="Search..." name="search"></input>
-            <Link to={`/search/`}><input type="image" id="search-button" onClick={onSearch} src={process.env.PUBLIC_URL + '/search.png'} /></Link>
+            <Link to={`/search/`}><input type="image" alt="Picture of movie poster" id="search-button" onClick={onSearch} src={process.env.PUBLIC_URL + '/search.png'} /></Link>
           </form>
         </div>
       </div>

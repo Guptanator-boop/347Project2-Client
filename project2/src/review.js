@@ -4,14 +4,14 @@ export function Review(props){
     const review = props.review;
 
     return (
-        <div className="review">
+        <div className="review-item">
             <div className="review-left">
-                <span className="username">{review.username}</span>
-                <span className="movie_name">{review.movie_name}</span>
-                <span className="rating">{review.rating}</span>
-                </div>
+                <div className="review-name">Name: {review.username}</div>
+                {/* <span className="movie_name">{review.movie_name}</span> */}
+                <div className="review-rating">Rating: {review.rating}</div>
+            </div>
             <div className="review-right">
-                <span className="message">{review.message}</span>
+                <div className="review-message">{review.message}</div>
             </div>
         </div>
     );

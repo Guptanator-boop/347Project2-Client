@@ -12,6 +12,7 @@ export function Movie(props) {
                 <p className="vote"><strong>{movie.vote_average}</strong></p>
             </div> 
         );
+
     } else {
         return (
             <div className="movie">

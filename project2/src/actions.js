@@ -1,5 +1,4 @@
 const API_KEY = '32a683d6e47d7bf3d66fbb4c7b83c854';
-// const baseURL = 'https://api.themoviedb.org/3/';
 
 export const Action = Object.freeze({
     LoadReviews: 'LoadReviews',
@@ -14,6 +13,26 @@ export function loadReviews(reviews){
     return{
         type: Action.LoadReviews,
         payload: reviews,
+    };
+}
+
+export function startLoadingReviews(movie){
+    const url = `https://express-backend.347kush.me:8442/reviews/${movie}`;
+
+    const options = {
+        method: 'GET',
+    };
+
+    return dispatch => {
+        fetch(url, options)
+        .then(checkForErrors)
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok){
+                dispatch(finishAddingReview(data.reviews));
+            }
+        })
+        .catch(e => console.error(e));
     };
 }
 
@@ -39,19 +58,6 @@ function loadSearchAction(search) {
         payload: search,
     };
 }
-
-// function fetchSources() {
-//     let url = "".concat(baseURL, 'configuration?api_key=', API_KEY);
-//     fetch(url)
-//     .then((result) => {
-//         return result.json();
-//     })
-//     .then((data) => {
-//         let baseImageURL = data.images.secure_base_url;
-//         // configData = data.images;
-//         search(baseImageURL);
-//     })
-// }
 
 export function loadTrending() {
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
@@ -125,6 +131,8 @@ export function startAddingReview(name, movie, rate, mess){
         username: name, movie_name: movie, rating: rate, message: mess,
     };
 
+    console.log(JSON.stringify(review));
+
     const options = {
         method: 'POST',
         headers: {
@@ -134,7 +142,7 @@ export function startAddingReview(name, movie, rate, mess){
     };
 
     return dispatch => {
-        fetch(`/reviews`, options)
+        fetch(`https://express-backend.347kush.me:8442/reviews/`, options)
         .then(checkForErrors)
         .then(response => response.json())
         .then(data => {

@@ -18,7 +18,7 @@ h2 {
 }
 
 .top {
-  background-color: salmon;
+  background: linear-gradient(to left, salmon, #FFA98F, salmon);
   padding-top: 1px;
   padding-bottom: 15px;
   border-bottom: solid black ;
@@ -104,9 +104,10 @@ h2 {
   padding-top: 1px;
 }
 
-img {
+.movie-list img {
   height: 175px;
   border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 h2 {
@@ -120,10 +121,14 @@ h2 {
 .movie_image {
   width: 233.312px;
   height: 350px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .movie_date{
   color:salmon;
   font-size: 14px;
+  padding-top: 5px;
+  margin-bottom: 0px;
 }
 .movie_description {
   color: #ddd;
@@ -175,6 +180,47 @@ h2 {
 .review-list {
   display: flex;
   flex-direction: column;
+}
+
+.review-item {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 20px;
+  display: grid;
+  background-color: #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.review-left {
+  text-align: left;
+  margin-left: 10%;
+  grid-row-start: 0;
+  grid-row-end: 1;
+  grid-column-start: 0;
+  grid-column-end: 1;
+}
+
+.review-right {
+  text-align: left;
+  margin-left: 10px;
+  grid-row-start: 0;
+  grid-row-end: 1;
+  grid-column-start: 1;
+  grid-column-end: 8;
+  display: flex;
+  flex-direction: column;
+}
+
+#add-review {
+  background-color: #1C2833;
+  color: salmon;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 footer {
@@ -235,17 +281,17 @@ footer {
   /* Movie page css */
   #movie-body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
   
   .inner-body {
     padding-top: 10px;
-    width: 50%;
+    width: 95%;
   }
   
   .right-info {
-    padding-left: 10px;
     text-align: left;
   }
   
@@ -259,7 +305,7 @@ footer {
   
   .movie-info {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     
   }
@@ -271,5 +317,8 @@ footer {
   .review-list {
     display: flex;
     flex-direction: column;
+  }
+  .movie-card {
+    opacity: .4;
   }
 }
