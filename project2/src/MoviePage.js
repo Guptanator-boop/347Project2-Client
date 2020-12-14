@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux';
+import {Review} from './Review';
 import {search, startAddingReview, startLoadingReviews} from './actions';
 import {Link} from 'react-router-dom';
-import {Review} from './Review';
 
 export function MoviePage(props) {
     var movie = props.movie;
